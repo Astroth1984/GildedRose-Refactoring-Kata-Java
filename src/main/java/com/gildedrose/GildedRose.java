@@ -25,6 +25,9 @@ class GildedRose {
 		if(item.name.equals(SulfurasItem.SULFURAS)) {
 			return new SulfurasItem(item);
 		}
+		if(item.name.equals("Conjured")) {
+			return new ConjuredItem(item);
+		}
     	return new InventoryService(item);
     }
      

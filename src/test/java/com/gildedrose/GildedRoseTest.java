@@ -172,4 +172,30 @@ class GildedRoseTest {
        assertEquals(0, backstageItem.quality);
    }
 // ===================== Tests For "Backstage passes" Item - End ======================
+   
+   
+   
+// ===================== Tests For "Conjured" Item - Start ====================================
+   
+   @Test
+   public void conjured_item_decreases_twice_as_fast_as_normal_items() {
+	   
+	   Item conjuredItem = new Item("Conjured", 12, 15);
+	   GildedRose gildedRose = new GildedRose(new Item[] {conjuredItem});
+	   gildedRose.updateInventoryItems();
+	   
+	   assertEquals(13, conjuredItem.quality);
+	   
+   }
+   
+   @Test
+   public void conjured_item_should_never_be_negative_in_quality() {
+	   Item conjuredItem = new Item("Conjured", 4, 1);
+	   GildedRose gildedRose = new GildedRose(new Item[] {conjuredItem});
+	   gildedRose.updateInventoryItems();
+	   
+	   assertEquals(0, conjuredItem.quality);
+   }
+   
+// ===================== Tests For "Conjured" Item - Start ====================================
 }
