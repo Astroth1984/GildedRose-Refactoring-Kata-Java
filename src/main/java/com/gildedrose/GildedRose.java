@@ -10,25 +10,11 @@ class GildedRose {
 
     public void updateInventoryItems() {
         for (Item item: items) {
-        	inventoryItemFactory(item).updateItem();
+        	
+        	new InventoryItemFactory(item).inventoryItemCreation().updateItem();
+        	
         }
     }
     
-    public InventoryService inventoryItemFactory(Item item) {
-		
-		if(item.name.equals(AgedBrieItem.AGED_BRIE)) {
-			return new AgedBrieItem(item);
-		}
-		if(item.name.equals(BackstageItem.BACK_STAGE_PASS)) {
-			return new BackstageItem(item);
-		}
-		if(item.name.equals(SulfurasItem.SULFURAS)) {
-			return new SulfurasItem(item);
-		}
-		if(item.name.equals("Conjured")) {
-			return new ConjuredItem(item);
-		}
-    	return new InventoryService(item);
-    }
      
 }
