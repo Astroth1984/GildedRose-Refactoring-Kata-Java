@@ -116,11 +116,25 @@ class GildedRoseTest {
    @Test
    public void backstageItem_increases_in_quality_by_two_when_ten_days_or_less_left() {
 	   
-	   Item backstageItem = new Item("Backstage passes to a TAFKAL80ETC concert", 8, 17);
-       GildedRose gildedRose = new GildedRose(new Item[] {backstageItem});
+	   Item backstageItemOne = new Item("Backstage passes to a TAFKAL80ETC concert", 8, 17);
+	   Item backstageItemTwo = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 17);
+	   
+       GildedRose gildedRose = new GildedRose(new Item[] {backstageItemOne, backstageItemTwo});
        
        gildedRose.updateQuality();
        
-       assertEquals(19, backstageItem.quality);
+       assertEquals(19, backstageItemOne.quality);
+       assertEquals(19, backstageItemTwo.quality);
+   }
+   
+   @Test
+   public void backstageItem_increases_in_quality_by_three_when_five_days_left() {
+	   
+	   Item backstageItem = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 12);
+	   
+	   GildedRose gildedRose = new GildedRose(new Item[] {backstageItem});
+       gildedRose.updateQuality();
+       
+       assertEquals(15, backstageItem.quality);
    }
 }
