@@ -137,4 +137,39 @@ class GildedRoseTest {
        
        assertEquals(15, backstageItem.quality);
    }
+   
+   @Test 
+   public void backstageItem_increases_in_quality_by_three_when_less_than_five_days_left() {
+	   
+	   Item backstageItem = new Item("Backstage passes to a TAFKAL80ETC concert", 3, 12);
+	   
+	   GildedRose gildedRose = new GildedRose(new Item[] {backstageItem});
+       gildedRose.updateQuality();
+       
+       assertEquals(15, backstageItem.quality);
+	   
+   }
+   
+   @Test
+   public void backstageItem_increases_in_quality_but_never_greater_than_fifty() {
+	   
+	   Item backstageItem = new Item("Backstage passes to a TAFKAL80ETC concert", 3, 49);
+	   
+	   GildedRose gildedRose = new GildedRose(new Item[] {backstageItem});
+       gildedRose.updateQuality();
+       
+       assertEquals(50, backstageItem.quality);
+   }
+   
+   @Test
+   public void backstageItem_drops_to_zero_after_the_concert() {
+	   
+	   Item backstageItem = new Item("Backstage passes to a TAFKAL80ETC concert", -1, 49);
+	   
+	   GildedRose gildedRose = new GildedRose(new Item[] {backstageItem});
+       gildedRose.updateQuality();
+       
+       assertEquals(0, backstageItem.quality);
+   }
+// ===================== Tests For "Backstage passes" Item - End ======================
 }
