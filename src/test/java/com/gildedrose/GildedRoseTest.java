@@ -44,4 +44,16 @@ class GildedRoseTest {
     	assertEquals(4, sellInPassedItem.quality);
     	
     }
+    
+    @Test
+    public void givenNullQuality_whenUpdateQuality_thenReturnNullQuality() {
+    	
+    	Item nullQualityItem = new Item("Item with null quality value", 2, 0);
+    	GildedRose gildedRose = new GildedRose(new Item[] {nullQualityItem});
+    	
+    	gildedRose.updateQuality();
+    	
+    	assertEquals(0, nullQualityItem.quality);
+    	
+    }
 }
