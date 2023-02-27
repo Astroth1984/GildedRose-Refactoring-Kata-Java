@@ -98,5 +98,18 @@ class GildedRoseTest {
        assertEquals(80, item.quality);
    }
    
-  
+// ===================== Tests For "Sulfuras" Item - End =============================== 
+
+// ===================== Tests For "Backstage passes" Item - Start ======================
+ 
+   @Test
+   public void backstageItem_increases_in_quality_as_its_sellIn_approaches() {
+	   
+	   Item backstageItem = new Item("Backstage passes to a TAFKAL80ETC concert", 11, 17);
+       GildedRose gildedRose = new GildedRose(new Item[] {backstageItem});
+
+       gildedRose.updateQuality();
+       
+       assertEquals(18, backstageItem.quality);
+   }
 }
