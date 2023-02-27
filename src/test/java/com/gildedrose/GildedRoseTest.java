@@ -56,4 +56,19 @@ class GildedRoseTest {
     	assertEquals(0, nullQualityItem.quality);
     	
     }
+    
+// ===================== Tests For Regular Item - End ====================================
+    
+// ===================== Tests For "Aged Brie" Item - Start ===============================
+    
+   @Test
+   public void givenAgedBrieItem_whenUpdateQuality_thenRetuenIncreasedQualityOverTime() {
+	   
+	   Item agedBrieItem = new Item("Aged Brie", 8, 4);
+	   GildedRose gildedRose = new GildedRose(new Item[] {agedBrieItem});
+	   
+	   gildedRose.updateQuality();
+	   
+	   assertEquals(5, agedBrieItem.quality);
+   }
 }
