@@ -9,35 +9,15 @@ class GildedRose {
 
     public void updateInventoryItems() {
         for (Item item: items) {
-        	updateInventoryItem(item);
+        	updateItem(item);
         }
     }
     
-    public void updateInventoryItem(Item item) {
+    public void updateItem(Item item) {
     	
     	updateItemQuality(item);
-
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            item.sellIn = item.sellIn - 1;
-        }
-
-        if (item.sellIn < 0) {
-            if (!item.name.equals("Aged Brie")) {
-                if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (item.quality > 0) {
-                        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                } else {
-                    item.quality = 0;
-                }
-            } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
-        }
+        decreaseSellIn(item);
+        expiredItem(item);
     }
     
     public void updateItemQuality(Item item) {
@@ -64,6 +44,32 @@ class GildedRose {
                             item.quality = item.quality + 1;
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    public void decreaseSellIn(Item item) {
+    	if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            item.sellIn = item.sellIn - 1;
+        }
+    }
+    
+    public void expiredItem(Item item) {
+    	if (item.sellIn < 0) {
+            if (!item.name.equals("Aged Brie")) {
+                if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (item.quality > 0) {
+                        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                            item.quality = item.quality - 1;
+                        }
+                    }
+                } else {
+                    item.quality = 0;
+                }
+            } else {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
                 }
             }
         }
