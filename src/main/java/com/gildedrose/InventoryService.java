@@ -2,7 +2,11 @@ package com.gildedrose;
 
 public class InventoryService {
 	
-	private Item item;
+	
+	
+	protected Item item;
+	
+	
 	
 	public InventoryService(Item item) {
 		this.item = item;
@@ -19,74 +23,31 @@ public class InventoryService {
         
     } 
    
-	private void updateItemQuality() {
-		
-		if (this.item.name.equals("Aged Brie")) {
-			
-			increaseItemQuality();
-			
-		} else if(this.item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-			
-			increaseItemQuality();
-			
-			if (this.item.sellIn < 11) {
-				increaseItemQuality();
-	        }
-	
-	        if (this.item.sellIn < 6) {
-	        	increaseItemQuality();
-	        }
-	        
-		} else if (this.item.name.equals("Sulfuras, Hand of Ragnaros")) {
-	        	return;
-	        	
-	    } else {
-	    	decreaseItemQuality(); 
-	    }
+	protected void updateItemQuality() {
+	    decreaseItemQuality(); 
 	}
 	
 	    
-	private void expiredItem() {
-	    	
-		if(this.item.name.equals("Aged Brie")) {
-			
-			increaseItemQuality();
-			
-		} else if (this.item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-			
-			this.item.quality = 0;
-			
-		} else if (this.item.name.equals("Sulfuras, Hand of Ragnaros")) {
-			
-			return;
-			
-		} else {
-			
-			decreaseItemQuality();
-		}
-	   	
+	protected void expiredItem() {
+		decreaseItemQuality();  	
    }
 	 
 	 
 	
-	private void decreaseItemQuality() {
+	protected void decreaseItemQuality() {
 		if (this.item.quality > 0) {
 			this.item.quality--;
 		}
 	}
 	
 	
-	private void increaseItemQuality() {
+	protected void increaseItemQuality() {
 		if (this.item.quality < 50) {
 		    this.item.quality++;
 		}
 	}
 	
-	private void decreaseSellInItem() {
-		if (this.item.name.equals("Sulfuras, Hand of Ragnaros")) {
-	        return;
-	    } else {
-	    	this.item.sellIn--;
-	    }
+	protected void decreaseSellInItem() {
+	    this.item.sellIn--; 
 	}
 }
