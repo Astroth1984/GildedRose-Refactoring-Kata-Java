@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 public class BackstageItem extends InventoryService {
+	
+	public static final String BACK_STAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
 
 	public BackstageItem(Item item) {
 		super(item);

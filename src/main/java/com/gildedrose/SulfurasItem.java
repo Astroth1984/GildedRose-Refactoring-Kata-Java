@@ -2,6 +2,10 @@ package com.gildedrose;
 
 public class SulfurasItem extends InventoryService {
 	
+	
+	public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+	
+	
 	public SulfurasItem (Item item) {
 		super(item);
 	}
