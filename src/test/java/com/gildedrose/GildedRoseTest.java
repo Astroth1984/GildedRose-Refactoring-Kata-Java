@@ -8,7 +8,7 @@ class GildedRoseTest {
 
 // ===================== Tests For Regular Item - Start ====================================
     @Test
-    void givenSellinQualityValues_whenUpdateQuality_thenReturnValuesDecreased() {
+    public void givenSellinQualityValues_whenUpdateQuality_thenReturnValuesDecreased() {
         Item regularItem = new Item("Regular Item", 3, 3);
         GildedRose gildedRose = new GildedRose(new Item[] {regularItem});
 
@@ -18,4 +18,19 @@ class GildedRoseTest {
         assertEquals(2, regularItem.quality);
     }
 
+    @Test
+    public void givenMultipleItems_whenUpdateQuality_thenReturnAllItemsDecresedInValuesByOne() {
+    	Item itemOne = new Item("Item One", 4, 5);
+    	Item itemTwo = new Item("Item Two", 7, 5);
+    	
+    	GildedRose gildedRose = new GildedRose(new Item[] {itemOne, itemTwo});
+    	
+    	gildedRose.updateQuality();
+    	
+    	assertEquals(3, itemOne.sellIn);
+    	assertEquals(6, itemTwo.sellIn);
+    	
+    	assertEquals(4, itemOne.quality);
+    	assertEquals(4, itemTwo.quality);
+    }
 }
