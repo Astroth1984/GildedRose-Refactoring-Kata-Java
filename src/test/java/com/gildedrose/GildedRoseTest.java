@@ -112,4 +112,15 @@ class GildedRoseTest {
        
        assertEquals(18, backstageItem.quality);
    }
+   
+   @Test
+   public void backstageItem_increases_in_quality_by_two_when_ten_days_or_less_left() {
+	   
+	   Item backstageItem = new Item("Backstage passes to a TAFKAL80ETC concert", 8, 17);
+       GildedRose gildedRose = new GildedRose(new Item[] {backstageItem});
+       
+       gildedRose.updateQuality();
+       
+       assertEquals(19, backstageItem.quality);
+   }
 }
