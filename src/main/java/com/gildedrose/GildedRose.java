@@ -10,18 +10,8 @@ class GildedRose {
     public void updateInventoryItems() {
         for (Item item: items) {
         	InventoryService itemFactory = new InventoryService(item);
-        	updateItem(item, itemFactory);
+        	itemFactory.updateItem();
         }
     }
     
-    
-    public void updateItem(Item item, InventoryService itemFactory) {
-    	itemFactory.updateItemQuality(item);
-    	itemFactory.decreaseSellInItem(item);
-        
-        if (item.sellIn < 0) {
-        	itemFactory.expiredItem(item);
-        }
-        
-    }
 }

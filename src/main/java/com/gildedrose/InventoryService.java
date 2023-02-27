@@ -7,77 +7,86 @@ public class InventoryService {
 	public InventoryService(Item item) {
 		this.item = item;
 	}
-
-	    
-	    
-	public void updateItemQuality(Item item) {
+	
+	
+	public void updateItem() {
+    	updateItemQuality();
+    	decreaseSellInItem();
+        
+        if (this.item.sellIn < 0) {
+        	expiredItem();
+        }
+        
+    } 
+   
+	public void updateItemQuality() {
 		
-		if (item.name.equals("Aged Brie")) {
+		if (this.item.name.equals("Aged Brie")) {
 			
-			increaseItemQuality(item);
+			increaseItemQuality();
 			
-		} else if(item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+		} else if(this.item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
 			
-			increaseItemQuality(item);
+			increaseItemQuality();
 			
-			if (item.sellIn < 11) {
-				increaseItemQuality(item);
+			if (this.item.sellIn < 11) {
+				increaseItemQuality();
 	        }
 	
-	        if (item.sellIn < 6) {
-	        	increaseItemQuality(item);
+	        if (this.item.sellIn < 6) {
+	        	increaseItemQuality();
 	        }
 	        
-		} else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+		} else if (this.item.name.equals("Sulfuras, Hand of Ragnaros")) {
 	        	return;
 	        	
 	    } else {
-	    	decreaseItemQuality(item); 
+	    	decreaseItemQuality(); 
 	    }
 	}
 	
 	    
-	public void expiredItem(Item item) {
+	public void expiredItem() {
 	    	
-		if(item.name.equals("Aged Brie")) {
+		if(this.item.name.equals("Aged Brie")) {
 			
-			increaseItemQuality(item);
+			increaseItemQuality();
 			
-		} else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+		} else if (this.item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
 			
-			item.quality = 0;
+			this.item.quality = 0;
 			
-		} else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+		} else if (this.item.name.equals("Sulfuras, Hand of Ragnaros")) {
 			
 			return;
 			
 		} else {
 			
-			decreaseItemQuality(item);
+			decreaseItemQuality();
 		}
 	   	
    }
 	 
 	 
 	
-	public void decreaseItemQuality(Item item) {
-		if (item.quality > 0) {
-			item.quality--;
+	public void decreaseItemQuality() {
+		if (this.item.quality > 0) {
+			this.item.quality--;
 		}
 	}
 	
 	
-	private void increaseItemQuality(Item item) {
-		if (item.quality < 50) {
-		    item.quality++;
+	private void increaseItemQuality() {
+		if (this.item.quality < 50) {
+		    this.item.quality++;
 		}
 	}
 	
-	public void decreaseSellInItem(Item item) {
-		if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+	public void decreaseSellInItem() {
+		if (this.item.name.equals("Sulfuras, Hand of Ragnaros")) {
 	        return;
 	    } else {
-	    	item.sellIn--;
+	    	this.item.sellIn--;
 	    }
 	}
 }
