@@ -71,4 +71,14 @@ class GildedRoseTest {
 	   
 	   assertEquals(5, agedBrieItem.quality);
    }
+   
+   @Test
+   public void gievnQualityEqualsToFifty_whenUpdateQuality_thenReturnQualityNeverGreaterThanFifty() {
+	   Item agedBrieItem = new Item("Aged Brie", 4, 50);
+	   GildedRose gildedRose = new GildedRose(new Item[] {agedBrieItem});
+	   
+	   gildedRose.updateQuality();
+	   
+	   assertEquals(50, agedBrieItem.quality);
+   }
 }
