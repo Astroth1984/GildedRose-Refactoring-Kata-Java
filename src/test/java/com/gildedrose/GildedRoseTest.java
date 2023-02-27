@@ -81,4 +81,22 @@ class GildedRoseTest {
 	   
 	   assertEquals(50, agedBrieItem.quality);
    }
+   
+// ===================== Tests For "Aged Brie" Item - End ===============================
+
+// ===================== Tests For "Sulfuras" Item - Start ===============================
+   
+   @Test
+   public void sulfurasItem_never_has_to_be_sold_or_decreased_in_quality() {
+	   
+	   Item item = new Item("Sulfuras, Hand of Ragnaros", 5, 80);
+       GildedRose gildedRose = new GildedRose(new Item[] { item });
+
+       gildedRose.updateQuality();
+
+       assertEquals(5, item.sellIn);
+       assertEquals(80, item.quality);
+   }
+   
+  
 }
