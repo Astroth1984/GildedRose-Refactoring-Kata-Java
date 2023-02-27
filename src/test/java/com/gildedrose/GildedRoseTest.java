@@ -33,4 +33,15 @@ class GildedRoseTest {
     	assertEquals(4, itemOne.quality);
     	assertEquals(4, itemTwo.quality);
     }
+    
+    @Test
+    public void givenSellInPassed_whenUpdateQuality_thenReturnQualityDecreasedTwice() {
+    	Item sellInPassedItem = new Item("Item with sellin Passed", -1, 6);
+    	GildedRose gildedRose = new GildedRose(new Item[] {sellInPassedItem});
+    	
+    	gildedRose.updateQuality();
+    	
+    	assertEquals(4, sellInPassedItem.quality);
+    	
+    }
 }
