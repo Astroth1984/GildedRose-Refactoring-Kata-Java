@@ -19,7 +19,7 @@ public class InventoryService {
         
     } 
    
-	public void updateItemQuality() {
+	private void updateItemQuality() {
 		
 		if (this.item.name.equals("Aged Brie")) {
 			
@@ -46,7 +46,7 @@ public class InventoryService {
 	}
 	
 	    
-	public void expiredItem() {
+	private void expiredItem() {
 	    	
 		if(this.item.name.equals("Aged Brie")) {
 			
@@ -69,7 +69,7 @@ public class InventoryService {
 	 
 	 
 	
-	public void decreaseItemQuality() {
+	private void decreaseItemQuality() {
 		if (this.item.quality > 0) {
 			this.item.quality--;
 		}
@@ -82,7 +82,7 @@ public class InventoryService {
 		}
 	}
 	
-	public void decreaseSellInItem() {
+	private void decreaseSellInItem() {
 		if (this.item.name.equals("Sulfuras, Hand of Ragnaros")) {
 	        return;
 	    } else {
